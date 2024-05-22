@@ -3,6 +3,6 @@ import taskRouter from "./Routes/task";
 
 const router = Router();
 
-router.use("/production/task", taskRouter);
+router.use("/task", taskRouter);
 
 export { router };
