@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.14.0
- * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+ * Prisma Client JS version: 5.13.0
+ * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
  */
 Prisma.prismaVersion = {
-  client: "5.14.0",
-  engine: "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48"
+  client: "5.13.0",
+  engine: "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -169,7 +169,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Carlos Augusto\\Documents\\Github\\Todo-API\\prisma\\database\\main",
+      "value": "C:\\Users\\Carlos Augusto\\Documents\\Github\\Sat-Web-API\\Todo-API\\prisma\\database\\main",
       "fromEnvVar": null
     },
     "config": {
@@ -204,8 +204,8 @@ const config = {
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../..",
-  "clientVersion": "5.14.0",
-  "engineVersion": "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48",
+  "clientVersion": "5.13.0",
+  "engineVersion": "b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b",
   "datasourceNames": [
     "db"
   ],
@@ -219,8 +219,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"./database/main\"\n  previewFeatures = [\"views\"]\n  binaryTargets   = [\"native\", \"debian-openssl-1.1.x\", \"rhel-openssl-1.0.x\", \"rhel-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Task {\n  id           String    @id @default(dbgenerated(\"gen_random_uuid()\")) @db.Uuid\n  created_at   DateTime  @default(now()) @db.Timestamptz(6)\n  title        String\n  description  String\n  completed    Boolean   @default(false)\n  completed_at DateTime? @db.Timestamptz(6)\n}\n\nmodel Permission {\n  id             Int              @id @default(autoincrement())\n  name           String\n  RolePermission RolePermission[]\n}\n\nmodel RefreshToken {\n  id        String   @id\n  token     String\n  createdAt DateTime @default(now())\n  idUser    Int\n  revoked   Boolean  @default(false)\n  User      User     @relation(fields: [idUser], references: [id])\n}\n\nmodel Role {\n  id             Int              @id @default(autoincrement())\n  name           String\n  RolePermission RolePermission[]\n  UserRole       UserRole[]\n}\n\nmodel RolePermission {\n  roleId       Int\n  permissionId Int\n  Permission   Permission @relation(fields: [permissionId], references: [id])\n  Role         Role       @relation(fields: [roleId], references: [id])\n\n  @@id([roleId, permissionId])\n}\n\nmodel User {\n  id           Int            @id @default(autoincrement())\n  name         String\n  email        String         @unique\n  password     String\n  username     String?        @unique(map: \"User_user_key\")\n  RefreshToken RefreshToken[]\n  UserRole     UserRole[]\n}\n\nmodel UserRole {\n  userId Int\n  roleId Int\n  Role   Role @relation(fields: [roleId], references: [id])\n  User   User @relation(fields: [userId], references: [id])\n\n  @@id([userId, roleId])\n}\n",
-  "inlineSchemaHash": "e139cb8e15ee1309ec594457025ca1251350c908f2c9fed4a3f7f01f46fdee4c",
+  "inlineSchema": "generator client {\r\n  provider = \"prisma-client-js\"\r\n  output          = \"./database/main\"\r\n  previewFeatures = [\"views\"]\r\n  binaryTargets   = [\"native\", \"debian-openssl-1.1.x\", \"rhel-openssl-1.0.x\", \"rhel-openssl-3.0.x\"]\r\n}\r\n\r\ndatasource db {\r\n  provider = \"postgresql\"\r\n  url      = env(\"DATABASE_URL\")\r\n}\r\n\r\nmodel Task {\r\n  id           String    @id @default(dbgenerated(\"gen_random_uuid()\")) @db.Uuid\r\n  created_at   DateTime  @default(now()) @db.Timestamptz(6)\r\n  title        String\r\n  description  String\r\n  completed    Boolean   @default(false)\r\n  completed_at DateTime? @db.Timestamptz(6)\r\n}\r\n\r\nmodel Permission {\r\n  id             Int              @id @default(autoincrement())\r\n  name           String\r\n  RolePermission RolePermission[]\r\n}\r\n\r\nmodel RefreshToken {\r\n  id        String   @id\r\n  token     String\r\n  createdAt DateTime @default(now())\r\n  idUser    Int\r\n  revoked   Boolean  @default(false)\r\n  User      User     @relation(fields: [idUser], references: [id])\r\n}\r\n\r\nmodel Role {\r\n  id             Int              @id @default(autoincrement())\r\n  name           String\r\n  RolePermission RolePermission[]\r\n  UserRole       UserRole[]\r\n}\r\n\r\nmodel RolePermission {\r\n  roleId       Int\r\n  permissionId Int\r\n  Permission   Permission @relation(fields: [permissionId], references: [id])\r\n  Role         Role       @relation(fields: [roleId], references: [id])\r\n\r\n  @@id([roleId, permissionId])\r\n}\r\n\r\nmodel User {\r\n  id           Int            @id @default(autoincrement())\r\n  name         String\r\n  email        String         @unique\r\n  password     String\r\n  username     String?        @unique(map: \"User_user_key\")\r\n  RefreshToken RefreshToken[]\r\n  UserRole     UserRole[]\r\n}\r\n\r\nmodel UserRole {\r\n  userId Int\r\n  roleId Int\r\n  Role   Role @relation(fields: [roleId], references: [id])\r\n  User   User @relation(fields: [userId], references: [id])\r\n\r\n  @@id([userId, roleId])\r\n}\r\n",
+  "inlineSchemaHash": "c44c07e4ee0150ab19e723a1e40a62fcb02ea00e6f51f53965a6bc4019c35482",
   "copyEngine": true
 }
 

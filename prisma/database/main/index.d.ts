@@ -297,8 +297,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 5.14.0
-   * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
+   * Prisma Client JS version: 5.13.0
+   * Query Engine version: b9a39a7ee606c28e3455d0fd60e78c3ba82b1a2b
    */
   export type PrismaVersion = {
     client: string
@@ -776,10 +776,6 @@ export namespace Prisma {
             args: Prisma.TaskCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.TaskCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$TaskPayload>[]
-          }
           delete: {
             args: Prisma.TaskDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$TaskPayload>
@@ -845,10 +841,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.PermissionCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PermissionCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$PermissionPayload>[]
           }
           delete: {
             args: Prisma.PermissionDeleteArgs<ExtArgs>,
@@ -916,10 +908,6 @@ export namespace Prisma {
             args: Prisma.RefreshTokenCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.RefreshTokenCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>[]
-          }
           delete: {
             args: Prisma.RefreshTokenDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$RefreshTokenPayload>
@@ -985,10 +973,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.RoleCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.RoleCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RolePayload>[]
           }
           delete: {
             args: Prisma.RoleDeleteArgs<ExtArgs>,
@@ -1056,10 +1040,6 @@ export namespace Prisma {
             args: Prisma.RolePermissionCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.RolePermissionCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$RolePermissionPayload>[]
-          }
           delete: {
             args: Prisma.RolePermissionDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$RolePermissionPayload>
@@ -1126,10 +1106,6 @@ export namespace Prisma {
             args: Prisma.UserCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
-          createManyAndReturn: {
-            args: Prisma.UserCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
-          }
           delete: {
             args: Prisma.UserDeleteArgs<ExtArgs>,
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -1195,10 +1171,6 @@ export namespace Prisma {
           createMany: {
             args: Prisma.UserRoleCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.UserRoleCreateManyAndReturnArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$UserRolePayload>[]
           }
           delete: {
             args: Prisma.UserRoleDeleteArgs<ExtArgs>,
@@ -1339,7 +1311,6 @@ export namespace Prisma {
     | 'findFirstOrThrow'
     | 'create'
     | 'createMany'
-    | 'createManyAndReturn'
     | 'update'
     | 'updateMany'
     | 'upsert'
@@ -1729,8 +1700,8 @@ export namespace Prisma {
     ): Prisma__TaskClient<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Task that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one Task that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {TaskFindUniqueOrThrowArgs} args - Arguments to find a Task
      * @example
      * // Get one Task
@@ -1783,7 +1754,7 @@ export namespace Prisma {
      * Find zero or more Tasks that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TaskFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TaskFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Tasks
      * const tasks = await prisma.task.findMany()
@@ -1817,45 +1788,19 @@ export namespace Prisma {
 
     /**
      * Create many Tasks.
-     * @param {TaskCreateManyArgs} args - Arguments to create many Tasks.
-     * @example
-     * // Create many Tasks
-     * const task = await prisma.task.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {TaskCreateManyArgs} args - Arguments to create many Tasks.
+     *     @example
+     *     // Create many Tasks
+     *     const task = await prisma.task.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends TaskCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, TaskCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Tasks and returns the data saved in the database.
-     * @param {TaskCreateManyAndReturnArgs} args - Arguments to create many Tasks.
-     * @example
-     * // Create many Tasks
-     * const task = await prisma.task.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Tasks and only return the `id`
-     * const taskWithIdOnly = await prisma.task.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends TaskCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, TaskCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Task.
@@ -2310,21 +2255,6 @@ export namespace Prisma {
   }
 
   /**
-   * Task createManyAndReturn
-   */
-  export type TaskCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Task
-     */
-    select?: TaskSelect<ExtArgs> | null
-    /**
-     * The data used to create many Tasks.
-     */
-    data: TaskCreateManyInput | TaskCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * Task update
    */
   export type TaskUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2641,8 +2571,8 @@ export namespace Prisma {
     ): Prisma__PermissionClient<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Permission that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one Permission that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {PermissionFindUniqueOrThrowArgs} args - Arguments to find a Permission
      * @example
      * // Get one Permission
@@ -2695,7 +2625,7 @@ export namespace Prisma {
      * Find zero or more Permissions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermissionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PermissionFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Permissions
      * const permissions = await prisma.permission.findMany()
@@ -2729,45 +2659,19 @@ export namespace Prisma {
 
     /**
      * Create many Permissions.
-     * @param {PermissionCreateManyArgs} args - Arguments to create many Permissions.
-     * @example
-     * // Create many Permissions
-     * const permission = await prisma.permission.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {PermissionCreateManyArgs} args - Arguments to create many Permissions.
+     *     @example
+     *     // Create many Permissions
+     *     const permission = await prisma.permission.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends PermissionCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, PermissionCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Permissions and returns the data saved in the database.
-     * @param {PermissionCreateManyAndReturnArgs} args - Arguments to create many Permissions.
-     * @example
-     * // Create many Permissions
-     * const permission = await prisma.permission.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Permissions and only return the `id`
-     * const permissionWithIdOnly = await prisma.permission.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends PermissionCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, PermissionCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermissionPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Permission.
@@ -3243,25 +3147,6 @@ export namespace Prisma {
   }
 
   /**
-   * Permission createManyAndReturn
-   */
-  export type PermissionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permission
-     */
-    select?: PermissionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermissionInclude<ExtArgs> | null
-    /**
-     * The data used to create many Permissions.
-     */
-    data: PermissionCreateManyInput | PermissionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * Permission update
    */
   export type PermissionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3642,8 +3527,8 @@ export namespace Prisma {
     ): Prisma__RefreshTokenClient<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one RefreshToken that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one RefreshToken that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {RefreshTokenFindUniqueOrThrowArgs} args - Arguments to find a RefreshToken
      * @example
      * // Get one RefreshToken
@@ -3696,7 +3581,7 @@ export namespace Prisma {
      * Find zero or more RefreshTokens that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RefreshTokenFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RefreshTokenFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all RefreshTokens
      * const refreshTokens = await prisma.refreshToken.findMany()
@@ -3730,45 +3615,19 @@ export namespace Prisma {
 
     /**
      * Create many RefreshTokens.
-     * @param {RefreshTokenCreateManyArgs} args - Arguments to create many RefreshTokens.
-     * @example
-     * // Create many RefreshTokens
-     * const refreshToken = await prisma.refreshToken.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {RefreshTokenCreateManyArgs} args - Arguments to create many RefreshTokens.
+     *     @example
+     *     // Create many RefreshTokens
+     *     const refreshToken = await prisma.refreshToken.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends RefreshTokenCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, RefreshTokenCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many RefreshTokens and returns the data saved in the database.
-     * @param {RefreshTokenCreateManyAndReturnArgs} args - Arguments to create many RefreshTokens.
-     * @example
-     * // Create many RefreshTokens
-     * const refreshToken = await prisma.refreshToken.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many RefreshTokens and only return the `id`
-     * const refreshTokenWithIdOnly = await prisma.refreshToken.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends RefreshTokenCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, RefreshTokenCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a RefreshToken.
@@ -4247,25 +4106,6 @@ export namespace Prisma {
   }
 
   /**
-   * RefreshToken createManyAndReturn
-   */
-  export type RefreshTokenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the RefreshToken
-     */
-    select?: RefreshTokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RefreshTokenInclude<ExtArgs> | null
-    /**
-     * The data used to create many RefreshTokens.
-     */
-    data: RefreshTokenCreateManyInput | RefreshTokenCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * RefreshToken update
    */
   export type RefreshTokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4601,8 +4441,8 @@ export namespace Prisma {
     ): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one Role that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one Role that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {RoleFindUniqueOrThrowArgs} args - Arguments to find a Role
      * @example
      * // Get one Role
@@ -4655,7 +4495,7 @@ export namespace Prisma {
      * Find zero or more Roles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RoleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RoleFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Roles
      * const roles = await prisma.role.findMany()
@@ -4689,45 +4529,19 @@ export namespace Prisma {
 
     /**
      * Create many Roles.
-     * @param {RoleCreateManyArgs} args - Arguments to create many Roles.
-     * @example
-     * // Create many Roles
-     * const role = await prisma.role.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {RoleCreateManyArgs} args - Arguments to create many Roles.
+     *     @example
+     *     // Create many Roles
+     *     const role = await prisma.role.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends RoleCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, RoleCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Roles and returns the data saved in the database.
-     * @param {RoleCreateManyAndReturnArgs} args - Arguments to create many Roles.
-     * @example
-     * // Create many Roles
-     * const role = await prisma.role.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Roles and only return the `id`
-     * const roleWithIdOnly = await prisma.role.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends RoleCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, RoleCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a Role.
@@ -5205,25 +5019,6 @@ export namespace Prisma {
   }
 
   /**
-   * Role createManyAndReturn
-   */
-  export type RoleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Role
-     */
-    select?: RoleSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RoleInclude<ExtArgs> | null
-    /**
-     * The data used to create many Roles.
-     */
-    data: RoleCreateManyInput | RoleCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * Role update
    */
   export type RoleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5601,8 +5396,8 @@ export namespace Prisma {
     ): Prisma__RolePermissionClient<$Result.GetResult<Prisma.$RolePermissionPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one RolePermission that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one RolePermission that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {RolePermissionFindUniqueOrThrowArgs} args - Arguments to find a RolePermission
      * @example
      * // Get one RolePermission
@@ -5655,7 +5450,7 @@ export namespace Prisma {
      * Find zero or more RolePermissions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {RolePermissionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RolePermissionFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all RolePermissions
      * const rolePermissions = await prisma.rolePermission.findMany()
@@ -5689,45 +5484,19 @@ export namespace Prisma {
 
     /**
      * Create many RolePermissions.
-     * @param {RolePermissionCreateManyArgs} args - Arguments to create many RolePermissions.
-     * @example
-     * // Create many RolePermissions
-     * const rolePermission = await prisma.rolePermission.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {RolePermissionCreateManyArgs} args - Arguments to create many RolePermissions.
+     *     @example
+     *     // Create many RolePermissions
+     *     const rolePermission = await prisma.rolePermission.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends RolePermissionCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, RolePermissionCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many RolePermissions and returns the data saved in the database.
-     * @param {RolePermissionCreateManyAndReturnArgs} args - Arguments to create many RolePermissions.
-     * @example
-     * // Create many RolePermissions
-     * const rolePermission = await prisma.rolePermission.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many RolePermissions and only return the `roleId`
-     * const rolePermissionWithRoleIdOnly = await prisma.rolePermission.createManyAndReturn({ 
-     *   select: { roleId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends RolePermissionCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, RolePermissionCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePermissionPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a RolePermission.
@@ -6205,25 +5974,6 @@ export namespace Prisma {
   }
 
   /**
-   * RolePermission createManyAndReturn
-   */
-  export type RolePermissionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the RolePermission
-     */
-    select?: RolePermissionSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: RolePermissionInclude<ExtArgs> | null
-    /**
-     * The data used to create many RolePermissions.
-     */
-    data: RolePermissionCreateManyInput | RolePermissionCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * RolePermission update
    */
   export type RolePermissionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6589,8 +6339,8 @@ export namespace Prisma {
     ): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one User that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one User that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {UserFindUniqueOrThrowArgs} args - Arguments to find a User
      * @example
      * // Get one User
@@ -6643,7 +6393,7 @@ export namespace Prisma {
      * Find zero or more Users that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UserFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Users
      * const users = await prisma.user.findMany()
@@ -6677,45 +6427,19 @@ export namespace Prisma {
 
     /**
      * Create many Users.
-     * @param {UserCreateManyArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {UserCreateManyArgs} args - Arguments to create many Users.
+     *     @example
+     *     // Create many Users
+     *     const user = await prisma.user.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends UserCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, UserCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Users and returns the data saved in the database.
-     * @param {UserCreateManyAndReturnArgs} args - Arguments to create many Users.
-     * @example
-     * // Create many Users
-     * const user = await prisma.user.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends UserCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a User.
@@ -7196,25 +6920,6 @@ export namespace Prisma {
   }
 
   /**
-   * User createManyAndReturn
-   */
-  export type UserCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    /**
-     * The data used to create many Users.
-     */
-    data: UserCreateManyInput | UserCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
    * User update
    */
   export type UserUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7592,8 +7297,8 @@ export namespace Prisma {
     ): Prisma__UserRoleClient<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one UserRole that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
+     * Find one UserRole that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
      * @param {UserRoleFindUniqueOrThrowArgs} args - Arguments to find a UserRole
      * @example
      * // Get one UserRole
@@ -7646,7 +7351,7 @@ export namespace Prisma {
      * Find zero or more UserRoles that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserRoleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UserRoleFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all UserRoles
      * const userRoles = await prisma.userRole.findMany()
@@ -7680,45 +7385,19 @@ export namespace Prisma {
 
     /**
      * Create many UserRoles.
-     * @param {UserRoleCreateManyArgs} args - Arguments to create many UserRoles.
-     * @example
-     * // Create many UserRoles
-     * const userRole = await prisma.userRole.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
+     *     @param {UserRoleCreateManyArgs} args - Arguments to create many UserRoles.
+     *     @example
+     *     // Create many UserRoles
+     *     const userRole = await prisma.userRole.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
      *     
     **/
     createMany<T extends UserRoleCreateManyArgs<ExtArgs>>(
       args?: SelectSubset<T, UserRoleCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many UserRoles and returns the data saved in the database.
-     * @param {UserRoleCreateManyAndReturnArgs} args - Arguments to create many UserRoles.
-     * @example
-     * // Create many UserRoles
-     * const userRole = await prisma.userRole.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many UserRoles and only return the `userId`
-     * const userRoleWithUserIdOnly = await prisma.userRole.createManyAndReturn({ 
-     *   select: { userId: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-    **/
-    createManyAndReturn<T extends UserRoleCreateManyAndReturnArgs<ExtArgs>>(
-      args?: SelectSubset<T, UserRoleCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserRolePayload<ExtArgs>, T, 'createManyAndReturn'>>
 
     /**
      * Delete a UserRole.
@@ -8188,25 +7867,6 @@ export namespace Prisma {
    * UserRole createMany
    */
   export type UserRoleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many UserRoles.
-     */
-    data: UserRoleCreateManyInput | UserRoleCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * UserRole createManyAndReturn
-   */
-  export type UserRoleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the UserRole
-     */
-    select?: UserRoleSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserRoleInclude<ExtArgs> | null
     /**
      * The data used to create many UserRoles.
      */
